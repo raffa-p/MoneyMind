@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" styleClass="background" stylesheets="@../../../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prota.moneymindapp.DiaryPage">
+   <children>
+      <BorderPane prefHeight="400.0" prefWidth="700.0">
+         <left>
+            <VBox prefHeight="427.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <GridPane prefHeight="300.0" prefWidth="100.0">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="54.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="300.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Pane prefHeight="300.0" prefWidth="100.0" styleClass="sidebar">
+                           <children>
+                              <StackPane layoutY="100.0" styleClass="sidebar-link-container">
+                                 <children>
+                                    <Button layoutX="14.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" styleClass="sidebar-link" text="Diario" />
+                                 </children>
+                              </StackPane>
+                              <StackPane layoutY="45.0" styleClass="sidebar-link-container">
+                                 <children>
+                                    <Button layoutX="14.0" layoutY="45.0" mnemonicParsing="false" onAction="#redirectHome" prefHeight="30.0" prefWidth="70.0" styleClass="sidebar-link" text="Home" />
+                                 </children>
+                              </StackPane>
+                              <StackPane layoutY="155.0" styleClass="sidebar-link-container">
+                                 <children>
+                                    <Button layoutX="14.0" layoutY="-2.0" mnemonicParsing="false" onAction="#redirectRecurrents" prefHeight="30.0" prefWidth="100.0" styleClass="sidebar-link" text="Ricorrenti" />
+                                 </children>
+                              </StackPane>
+                              <StackPane layoutY="235.0" styleClass="sidebar-link-container">
+                                 <children>
+                                    <Button layoutX="14.0" layoutY="-2.0" mnemonicParsing="false" onAction="#logOut" prefHeight="30.0" prefWidth="70.0" styleClass="sidebar-link" text="Esci" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </Pane>
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+         </left>
+         <top>
+            <GridPane styleClass="topbar" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="595.3333282470703" minWidth="10.0" prefWidth="595.3333282470703" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Pane styleClass="logo-top-left-container">
+                     <children>
+                        <ImageView fitHeight="99.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true" styleClass="logo-top-left">
+                           <image>
+                              <Image url="@../../../images/logo.png" />
+                           </image>
+                        </ImageView>
+                        <Pane layoutX="8.0" layoutY="-10.0" prefHeight="100.0" prefWidth="600.0">
+                           <children>
+                              <Label alignment="CENTER" layoutX="250.0" prefHeight="100.0" prefWidth="200.0" styleClass="page-title" text="DIARIO" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </GridPane>
+         </top>
+         <center>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="300.0" prefWidth="600.0">
+                     <children>
+                        <Pane prefHeight="300.0" prefWidth="600.0">
+                           <children>
+                              <StackPane layoutX="37.0" layoutY="25.0" prefHeight="250.0" prefWidth="411.0">
+                                 <children>
+                                    <TableView fx:id="table" prefHeight="250.0" prefWidth="417.0" styleClass="diary-table">
+                                       <contextMenu>
+                                          <ContextMenu>
+                                            <items>
+                                              <MenuItem mnemonicParsing="false" onAction="#removeCost" text="Rimuovi spesa" />
+                                            </items>
+                                          </ContextMenu>
+                                       </contextMenu>
+                                       <columns>
+                                          <TableColumn fx:id="idColumn" editable="false" prefWidth="75.0" sortable="false" text="ID" visible="false" />
+                                          <TableColumn fx:id="costoColumn" prefWidth="120.0" text="Costo" />
+                                          <TableColumn fx:id="categoriaColumn" prefWidth="141.0" text="Categoria" />
+                                          <TableColumn fx:id="ricorrenteColumn" minWidth="7.0" prefWidth="113.0" text="Ricorrente" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </StackPane>
+                              <Button fx:id="addCost" layoutX="515.0" layoutY="245.0" mnemonicParsing="false" onAction="#tryAddCost" prefHeight="46.0" prefWidth="52.0" styleClass="plus-button" text="+" />
+                              <Button layoutX="473.0" layoutY="245.0" mnemonicParsing="false" onAction="#updateTable" prefHeight="46.0" prefWidth="52.0" styleClass="plus-button">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../images/refresh.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
