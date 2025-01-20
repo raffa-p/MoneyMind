@@ -1,2 +1,2 @@
 # MoneyMind
-Client - server Java application for personal finance managing.
+Client - Server Java 21 application for personal finance managing.
